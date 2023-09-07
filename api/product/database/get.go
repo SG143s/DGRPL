@@ -10,7 +10,7 @@ func Search(val string) []md.Pr {
 	var data []md.Pr
 	var temp md.Pr
 
-	row, err := db.Query("SELECT * FROM tproducts WHERE productName LIKE %?%", val)
+	row, err := db.Query("SELECT * FROM tproducts WHERE productName LIKE ?", "%"+val+"%")
 	if err != nil {
 		fmt.Println(err)
 		panic(err)
