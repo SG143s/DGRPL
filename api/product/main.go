@@ -15,5 +15,5 @@ func main() {
 	store := cookie.NewStore([]byte("secret"))
 	r.Use(sessions.Sessions("mysession", store))
 
-	r.Run(":8001")
+	r.Run(":8002")
 }
