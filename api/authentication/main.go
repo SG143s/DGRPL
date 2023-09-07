@@ -10,7 +10,7 @@ import (
 func main() {
 	r := gin.Default()
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"localhost:8000"}
+	config.AllowOrigins = []string{"http://localhost:8000"}
 	r.Use(cors.New(config))
 	store := cookie.NewStore([]byte("secret"))
 	r.Use(sessions.Sessions("mysession", store))
