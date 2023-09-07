@@ -6,12 +6,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Add(c *gin.Context) {
+func Upd(c *gin.Context) {
 	var info str.Pr
 	if err := c.ShouldBindJSON(&info); err != nil {
 		c.JSON(400, gin.H{"error": "Invalid requestt"})
 		return
 	}
-	//add operation
+	//update operation
 	c.Status(200)
 }
