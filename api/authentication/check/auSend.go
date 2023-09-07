@@ -8,8 +8,13 @@ import (
 
 func SendAu(c *gin.Context) {
 	sess := sessions.Default(c)
-	var audata model.Small
-	audata.Id = sess.Get("userID").(string)
-	audata.Name = sess.Get("userName").(string)
-	c.JSON(200, audata)
+	logIn := sess.Get("loggedIn")
+	if logIn == false {
+		c.JSON(401, "not logged in")
+	} else {
+		var audata model.Small
+		audata.Id = sess.Get("userID").(string)
+		audata.Name = sess.Get("userName").(string)
+		c.JSON(200, audata)
+	}
 }
