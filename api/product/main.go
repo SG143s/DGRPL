@@ -1,10 +1,9 @@
 package main
 
 import (
+	db "github.com/SG143s/DGRPL/api/product/database"
 	op "github.com/SG143s/DGRPL/api/product/operation"
 	"github.com/gin-contrib/cors"
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,8 +12,8 @@ func main() {
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{"http://localhost:8000"}
 	r.Use(cors.New(config))
-	store := cookie.NewStore([]byte("secret"))
-	r.Use(sessions.Sessions("mysession", store))
+
+	db.SqlStart()
 
 	r.POST("/add", op.Add)
 
@@ -22,7 +21,7 @@ func main() {
 
 	r.PUT("/update", op.Upd)
 
-	r.GET("/product", op.Sh)
+	r.GET("/search/:id", op.Search)
 
 	r.Run(":8002")
 }

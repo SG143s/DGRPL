@@ -5,11 +5,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Del(c *gin.Context) {
+func Search(c *gin.Context) {
 	id := c.Param("id")
-	if !db.Delete(id) {
-		c.JSON(403, "error:invalid input")
-	} else {
-		c.Status(200)
-	}
+
+	data := db.Search(id)
+
+	c.JSON(200, data)
 }

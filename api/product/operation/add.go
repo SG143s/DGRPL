@@ -2,6 +2,7 @@ package operation
 
 import (
 	//"github.com/gin-contrib/sessions"
+	db "github.com/SG143s/DGRPL/api/product/database"
 	str "github.com/SG143s/DGRPL/api/product/model"
 	"github.com/gin-gonic/gin"
 )
@@ -12,6 +13,9 @@ func Add(c *gin.Context) {
 		c.JSON(400, gin.H{"error": "Invalid requestt"})
 		return
 	}
-	//add operation
-	c.Status(200)
+	if !db.Add(info) {
+		c.JSON(400, "error : invalid data")
+	} else {
+		c.Status(200)
+	}
 }

@@ -6,4 +6,5 @@ type Pr struct {
 	Own   string `json:"owID"`
 	Price int    `json:"prPr"`
 	Stock int    `json:"prSt"`
+	Image string `json:"prIm"`
 }

@@ -1,6 +1,8 @@
 package main
 
 import (
+	db "github.com/SG143s/DGRPL/api/authentication/database"
+	op "github.com/SG143s/DGRPL/api/authentication/operation"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
@@ -14,6 +16,10 @@ func main() {
 	r.Use(cors.New(config))
 	store := cookie.NewStore([]byte("secret"))
 	r.Use(sessions.Sessions("mysession", store))
+
+	db.SqlStart()
+
+	r.POST("/register", op.Reg)
 
 	r.Run(":8001")
 }
