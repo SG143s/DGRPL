@@ -2,6 +2,8 @@ package operation
 
 import (
 	//"github.com/gin-contrib/sessions"
+	"fmt"
+
 	db "github.com/SG143s/DGRPL/api/product/database"
 	str "github.com/SG143s/DGRPL/api/product/model"
 	"github.com/gin-gonic/gin"
@@ -11,6 +13,7 @@ func Add(c *gin.Context) {
 	var info str.Pr
 	if err := c.ShouldBindJSON(&info); err != nil {
 		c.JSON(400, gin.H{"error": "Invalid requestt"})
+		fmt.Println(err)
 		return
 	}
 	if !db.Add(info) {

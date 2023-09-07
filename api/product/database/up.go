@@ -7,9 +7,10 @@ import (
 )
 
 func Add(data md.Pr) bool {
-	_, err := db.Query("INSERT INTO tproducts values (?, ?, ?, ?, ?, ?, ?)", data.ID, data.Own, data.Name, data.Image, data.Price, data.Stock)
+	_, err := db.Query("INSERT INTO tproducts values (?, ?, ?, ?, ?, ?)", data.ID, data.Own, data.Name, data.Image, data.Price, data.Stock)
 	if err != nil {
 		fmt.Println(err)
+		panic(err)
 		return false
 	}
 	return true
