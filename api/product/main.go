@@ -17,7 +17,7 @@ func main() {
 
 	r.POST("/add", op.Add)
 
-	r.DELETE("/delete/:id", op.Del)
+	r.POST("/delete/:id", op.Del)
 
 	r.PUT("/update", op.Upd)
 
