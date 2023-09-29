@@ -9,6 +9,7 @@ func Del(c *gin.Context) {
 	id := c.Param("id")
 	if !db.Delete(id) {
 		c.JSON(403, "error:invalid input")
+		return
 	} else {
 		c.Status(200)
 	}

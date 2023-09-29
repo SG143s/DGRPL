@@ -1,10 +1,12 @@
 package model
 
 type Pr struct {
-	ID    string `json:"prID"`
-	Name  string `json:"prName"`
-	Own   string `json:"owID"`
-	Price int    `json:"prPr"`
-	Stock int    `json:"prSt"`
-	Image string `json:"prIm"`
+	ID       string   `json:"prID"`
+	Own      string   `json:"owID"`
+	Name     string   `json:"prName"`
+	TimeUsed int      `json:"prUsed"`
+	Desc     string   `json:"prDesc"`
+	Stock    int      `json:"prSt"`
+	Price    int      `json:"prPr"`
+	Image    []string `json:"imgs"`
 }

@@ -6,8 +6,8 @@ import (
 	md "github.com/SG143s/DGRPL/api/authentication/model"
 )
 
-func Reg(data md.Tuser) bool {
-	_, err := db.Query("INSERT INTO tusers values (?, ?, ?, ?, ?, ?, ?)", data.ID, data.Name, data.Pic, data.Uname, data.Password, data.Email, data.Balance)
+func Reg(data md.User) bool {
+	_, err := db.Query("CALL register (?, ?, ?, ?, ?, ?)", data.ID, data.Uname, data.Email, data.Password, data.Name, data.Pic)
 	if err != nil {
 		fmt.Println(err)
 		return false

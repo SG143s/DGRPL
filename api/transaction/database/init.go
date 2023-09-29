@@ -9,7 +9,7 @@ import (
 var db sql.DB
 
 func SqlStart() {
-	dbt, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/prplusers")
+	dbt, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/prplorders")
 
 	if err != nil {
 		panic(err)

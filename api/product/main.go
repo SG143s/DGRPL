@@ -17,11 +17,13 @@ func main() {
 
 	r.POST("/add", op.Add)
 
-	r.POST("/delete/:id", op.Del)
+	r.DELETE("/delete/:id", op.Del)
 
 	r.PUT("/update", op.Upd)
 
 	r.GET("/search/:id", op.Search)
+	r.GET("/getfourprod", op.Get4)
+	r.GET("/getthreeprod", op.Get3)
 
 	r.Run(":8002")
 }

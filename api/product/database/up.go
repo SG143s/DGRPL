@@ -7,10 +7,14 @@ import (
 )
 
 func Add(data md.Pr) bool {
-	_, err := db.Query("INSERT INTO tproducts values (?, ?, ?, ?, ?, ?)", data.ID, data.Own, data.Name, data.Image, data.Price, data.Stock)
+	_, err := db.Query("CALL add (?, ?, ?, ?, ?, ?, ?)", data.ID, data.Own, data.Name, data.TimeUsed, data.Desc, data.Price, data.Stock)
 	if err != nil {
 		fmt.Println(err)
-		panic(err)
+		return false
+	}
+	_, err = db.Query("CALL addimg (?, ?)", data.ID, "https://picsum.photos/500/500")
+	if err != nil {
+		fmt.Println(err)
 		return false
 	}
 	return true

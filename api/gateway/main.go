@@ -1,6 +1,7 @@
 package main
 
 import (
+	user "github.com/SG143s/DGRPL/api/gateway/user"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
@@ -14,6 +15,7 @@ func main() {
 	r.Use(cors.New(config))
 	store := cookie.NewStore([]byte("secret"))
 	r.Use(sessions.Sessions("mysession", store))
+	user.SetupUserRoutes(r)
 
-	r.Run(":8003")
+	r.Run(":8000")
 }
