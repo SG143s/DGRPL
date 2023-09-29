@@ -26,6 +26,7 @@ func main() {
 	r.POST("/login", op.LogIn)
 	r.POST("/logout", op.LogOut)
 	r.GET("/getauinformation", ch.SendAu)
+	r.GET("/getdata/:id", op.Getdata)
 
 	r.Run(":8001")
 }
