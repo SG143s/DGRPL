@@ -10,7 +10,7 @@ import (
 func main() {
 	r := gin.Default()
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:8000"}
+	config.AllowOrigins = []string{"http://localhost:5173"}
 	r.Use(cors.New(config))
 
 	db.SqlStart()
