@@ -15,6 +15,7 @@ func SAll(am int) []md.Sm {
 		fmt.Println(err)
 		panic(err)
 	}
+	defer row.Close()
 
 	for row.Next() {
 		err := row.Scan(&temp.ID, &temp.Own, &temp.Name, &temp.Price, &temp.Image)
@@ -36,6 +37,7 @@ func Search(val string) []md.Sm {
 		fmt.Println(err)
 		panic(err)
 	}
+	defer row.Close()
 
 	for row.Next() {
 		err := row.Scan(&temp.ID, &temp.Own, &temp.Name, &temp.Price, &temp.Image)
@@ -56,6 +58,7 @@ func Pr(id string) md.Pr {
 		fmt.Println(err)
 		panic(err)
 	}
+	defer row.Close()
 
 	for row.Next() {
 		err := row.Scan(&temp.ID, &temp.Own, &temp.Name, &temp.Desc, &temp.TimeUsed, &temp.Stock, &temp.Price)
@@ -79,4 +82,26 @@ func Pr(id string) md.Pr {
 		temp.Image = append(temp.Image, im)
 	}
 	return temp
+}
+
+func SearchOwn(val string) []md.Sm {
+	var data []md.Sm
+	var temp md.Sm
+
+	row, err := db.Query("CALL getown(?)", val)
+	if err != nil {
+		fmt.Println(err)
+		panic(err)
+	}
+	defer row.Close()
+
+	for row.Next() {
+		err := row.Scan(&temp.ID, &temp.Own, &temp.Name, &temp.Price, &temp.Image)
+		if err != nil {
+			fmt.Println(err)
+			panic(err)
+		}
+		data = append(data, temp)
+	}
+	return data
 }

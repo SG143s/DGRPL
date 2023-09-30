@@ -15,7 +15,7 @@ func main() {
 
 	db.SqlStart()
 
-	r.POST("/add", op.Add)
+	r.POST("/addorder", op.Add)
 
 	r.DELETE("/delete/:id", op.Del)
 

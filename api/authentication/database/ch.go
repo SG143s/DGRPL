@@ -73,5 +73,6 @@ func ChEmail(mail string) bool {
 			return true
 		}
 	}
+
 	return res != 1
 }

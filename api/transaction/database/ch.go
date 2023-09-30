@@ -19,3 +19,21 @@ func ChId(id string) bool {
 	}
 	return res != 1
 }
+
+func ChPayId(id string) bool {
+	var res int
+	row, err := db.Query("CALL chpayid (?)", id)
+	if err != nil {
+		fmt.Println(err)
+		return true
+	}
+	defer row.Close()
+	for row.Next() {
+		err = row.Scan(&res)
+		if err != nil {
+			fmt.Println(err)
+			return true
+		}
+	}
+	return res != 1
+}

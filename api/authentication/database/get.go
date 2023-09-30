@@ -27,5 +27,6 @@ func Getdat(id string) md.User {
 			panic(err)
 		}
 	}
+	defer row.Close()
 	return data
 }

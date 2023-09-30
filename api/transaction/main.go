@@ -20,6 +20,8 @@ func main() {
 	r.GET("/ordid", func(c *gin.Context) {
 		c.JSON(200, gin.H{"orderid": op.Genid()})
 	})
+	r.GET("/getorder/:id", op.Search)
+	r.GET("/fetchorder/:id", op.SearchSell)
 
 	r.Run(":8003")
 }

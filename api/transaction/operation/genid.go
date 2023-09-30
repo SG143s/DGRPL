@@ -23,3 +23,16 @@ func Genid() string {
 	}
 	return string(b)
 }
+
+func Genpayid() string {
+	b := make([]byte, 8)
+	var idexist = false
+
+	for !idexist {
+		for i := range b {
+			b[i] = letters[r.Intn(len(letters))]
+		}
+		idexist = db.ChPayId(string(b))
+	}
+	return string(b)
+}
