@@ -24,6 +24,7 @@ func main() {
 	r.GET("/search/:id", op.Search)
 	r.GET("/getfourprod", op.Get4)
 	r.GET("/getthreeprod", op.Get3)
+	r.GET("product/:id", op.SinP)
 
 	r.Run(":8002")
 }
